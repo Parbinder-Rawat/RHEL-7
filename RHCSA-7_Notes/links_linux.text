@@ -1,0 +1,37 @@
+############# Links in Linux ####################
+
+- Each files in Linux are represnted by 'inodes' which is unique numeric.
+- But it is difficult for human to remember files with inode number,
+  hence 'hardlink' is used which is sort of name for easy remembering.
+
+Links:
+	1. Hardlinks
+	2. Softliks
+
+Hardlinks: - It is just the copy of your file with different name with same inode number. (ls -il)
+	   	$ ln /etc/hosts comp
+		$ ls -il /etc/hosts comp  (inode no. is same and link counter will be 2).
+	   - It points directly to inode of a file.
+	   - Multiple hardlink can point to same inode.
+	   - inode does not know which hardlink it is associated with.
+	     but inode know that it is associated with how many inodes. 
+	   - Due to above unidirectional access, it has a limitation within
+	     the same file system/partition boundaries, i.e. it cannot be 
+	     created outside it's boundaries.
+
+Softlinks: - It points directly to the hardlink.
+	   - Thus this can be created outside it's filesystem/Partition 
+	     boundary, i.e. can be created on different server.
+	   - It can break if hardlink is moved/removed.
+
+		$ ln -s /etc/hosts mycomp (new inode no. is diff than original file's inode).
+
+
+
+NOTES: In RHEL-7, in order to create links, user should have read access to the source file otherwise it is not allowed.
+
+
+
+
+
+

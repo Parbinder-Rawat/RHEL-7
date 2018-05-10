@@ -1,0 +1,43 @@
+########## Text tools in Linux #############
+
+# cat - dumps the content on the screen.
+
+# less - Good for long files content, also capable of some commands.
+
+# tail - shows the last few lines of the file.
+	- we can modify the no. of lines we need.
+	
+	$ tail -n 5 /etc/passwd     >> lists last 5 lines of the file.
+
+# head - Shows the fisrt few lines of the files.
+
+	$ head -n 20 /etc/passwd    >> list 1st 20 lines of the files.
+
+# cut - Filters specific coloumn out of files.
+
+	$ cut -f 1 countries	>> Here, '-f' specify field(column) in file countries. i.e. it will filter out 1st column.
+
+	$ cut -f 2 -d : /etc/passwd	>> Here, we need to specify delimeter : with '-d' as /etc/passwd contains : as a joiner.
+
+
+# sort - To sort the output.
+
+	$ cat /etc/passwd | sort -n	>> Here, sort with number.
+
+	$ sort -n file1
+
+	$ sort -f file2		>> Here, it sort with case-insensitive, i.e. both a-z or, A-Z or, 0-9 or all mixed.
+
+
+# tr - Translate always work after a pipe '|'
+
+	$ echo hello | tr a-z A-Z	>> Here, hello is translated to HELLO
+
+	$ echo hello | tr [:lower:][:upper:]	>> Here, it translate any other language from lower to upper, if it is possible.
+
+	$ cat /dev/urandom | tr -dc a-zA-Z0-9
+			>> Here, character from urandom is translated to a-zA-Z0-9.
+				 - d delimeter
+				 - c character
+
+	$ man tr
