@@ -14,7 +14,9 @@ SOURCE: https://www.youtube.com/watch?v=uXD-Nuguhzc&t=19671s
 5. Redirection(>>): $ ls -l >> file.txt ------------- This append while the above will overwrite.
 
 6. 2>: Redirect STD error
-	*** NOTE: when redirecting STDOUT and STDERR, always specify STDERR at the end.
 	Example:- find / -name *.rpm 2> /dev/null
+	
+	*** NOTE: when redirecting STDOUT and STDERR, always specify STDERR at the end.
+		Ex:- find / -iname *.rpm > rpm_list 2> /dev/null
 
 7. | : Pipe the output to other command/file.
