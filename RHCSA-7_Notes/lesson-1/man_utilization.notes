@@ -12,4 +12,6 @@
 
 # date --help >>>>>> This can be used to check the available options for the cmd.
 
-# 
+# man -k date | grep 1  >>>>> If we only want the user specific commands. 
+
+# man -k date | grep 8  >>>>> If we only want the system specific commands.
