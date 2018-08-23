@@ -1,2 +1,50 @@
+Lesson-3
+Essential File management Tools:
+
+- Finding files
+		# find / -iname "passwd"
+		NOTE:- This may take long if some shares are on remote machine i.e. NFS.
+
+		# which passwd	>> works only for binary files
+		
+		# whereis passwd	>> works for almost all files.
+
+		# locate passwd		>> This only work if files are updated in its database.
+		# updatedb		>> so we can update the database and then locatedb is updated.
+
+- Links
+		# Every files in Linux is block of data, which is accessed using inodes.
+		# each file block has a unique inode number.
+		Two Type Links:
+			- Hard links: # name connected to the inode is useful for human, so name is given to each inode.
+				      # we can assign as many name to the same inode number.
+				      NOTE: Hardlink knows the inode it is associated with whereas the inode does'nt
+					    keep track of all the hardlink it is connected to.
+					    (i.e. it only knows how many hardlinks are connected but dont know which are they).
+				      # As it is directly linked to inodes, it can only be set within the same file system and cannot cross the boundary.
+		
+				$ ln /etc/passwd new1_passwd
+				$ ls -il /etc/passwd new1_passwd
+					>>> will long list both files, which shows having same inode number and link counter as 2.
+
+			- Symbolic Links: # It points to the hardlinks but not directly to inodes.
+					  # Becasue on this indirect link, it can be set outside of file system boundary to any FS.
+
+				$ ln -s /etc/passwd new2_passwd
+				$ ls -il /etc/passwd new2_passwd
+					>>> will long list both file, where the inode is diff and wide open permission i.e. lrwxrwxrwx.
+						-- Permissions are wide open because they are managed at destination file not on this file.
+
+		NOTE: In RHEL 7, normal user cannot create links of files where it does not have read permission.
+
+- TAR
+	$ tar -cvf file target_file
+	$ tar -czvf file target_file	>>> to tar with compression
+	$ tar -tvf target_file		>>> sow the content of file whithout extracting
+	$ tar -xvf target_file		>>> extract the tar file
+	$ tar -xvf target_file -C /tmp	>>> -C switch to other directory, here it is /tmp so it will extract files in /tmp.
+
+		NOTE: all the option flags used with tar must be in sequence, i.e. -cvf, tvf, xvf, etc.
+
 
 
