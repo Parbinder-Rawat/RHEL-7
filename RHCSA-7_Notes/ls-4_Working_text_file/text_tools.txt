@@ -16,7 +16,7 @@
 # cut - Filters specific coloumn out of files.
 
 	$ cut -f 1 countries	>> Here, '-f' specify field(column) in file countries. i.e. it will filter out 1st column.
-
+		NOTE: default delimeter is space/tab , so no need to specify for a file where column are separated by space/tab.
 	$ cut -f 2 -d : /etc/passwd	>> Here, we need to specify delimeter : with '-d' as /etc/passwd contains : as a joiner.
 
 
