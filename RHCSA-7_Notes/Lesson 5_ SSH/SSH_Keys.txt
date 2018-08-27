@@ -1,0 +1,27 @@
+SSH Working:
+
+1. ssh_client (CLIENT M/C) use $ ssh parbs@server.com, which will send the request to server.com.
+2. ssh_server (SERVER M/C) will send the public security key (/etc/ssh/ssh_host_ecdsa_key.pub) to CLIENT M/C,
+    where CLIENT M/C receive a prompt to accept the key.
+3. If user in CLIENT M/C finds the key is geniune, key will be accepted typing 'Yes' in the prompt,
+    and this public key of the server will get stored in the file ~/.ssh/known_hosts. 
+4. Then user in the CLIENT M/C get the prompt to put password, if password is correct, session is establishes
+    and connection is Successfull!.
+
+KEY Based Authentication:
+
+1. Generate Key:
+	$ ssh-keygen -t rsa -b 2048	>>> generate the rsa key for your account.
+				Where,  -t for type of authentication i.e. rsa, ecdsa, etc.
+					-b for byte size for key, here it is selected 2048 bytes, default is 1024 bytes.
+2. with above command, 2 key files (Private and public) are created in ~/.ssh/ 
+		i.e, 
+			id_rsa 
+			id_rsa.pub
+
+3. Need to copy the public key file created in above steps to the target host for key-based authentication.
+	$ ssh-copy-id -i ~/.ssh/id_rsa.pub user@server1.com	Where, i is for identity file.
+
+		One have to enter the password at this step and once authenticated, we are all good.
+
+4. Done!, next login will be key-based for this user.

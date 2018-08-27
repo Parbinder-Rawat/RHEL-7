@@ -1,0 +1,14 @@
+
+**** Change settings in /etc/ssh/sshd_config for more security of the server: ****
+
+Port 2022
+PermitRootLogin no
+
+*** Finger error ****
+#Cause: 
+	- host ID key is not matching with the one saved in ~/.ssh/known_host file in source host.
+	- It may be due to target host key is changed due to reinstallation or due to some other reason. 
+	- or, key in the source host is changed and not matching with the target host key.
+
+#Soution:
+delete the key entry of the target host from ~/.ssh/known_hosts in source host & the try again. It will add the new key and will work.

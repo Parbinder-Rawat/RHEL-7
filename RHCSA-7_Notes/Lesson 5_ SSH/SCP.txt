@@ -1,0 +1,8 @@
+SCP Secure copy is the other feature of SSH:
+
+$ scp testfile user@server2.com:~
+			Here, we are copying the testfile from current directory of source m/c to ~ of server2 host.
+
+$ scp -P 2022 testfile user@server2.com:~ 
+			Here, P (Uppercase) is used for specifying the port. (lower case p is reserved).
+			      p (Lowercase) is for presering the file permission while copying.
