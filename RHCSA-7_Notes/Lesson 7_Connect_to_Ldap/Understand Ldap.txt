@@ -1,0 +1,23 @@
+****LDAP: ****
+LDAP is a light weight directory access protocol. It connects to the directory server, which is heirarcal in its setup.
+
+Heirarcal means somewhat same as DNS. i.e.
+
+server.rhatcert.com  >>> DNS name
+
+	Here, 	com --->>> Top level domain.
+	      	rhatcert --->>> Sub-domain.
+		server --------->>> Leave object with name server.
+
+It is pretty much same as DNS objects but with little modification.
+	DNS name is :
+			lisa.rhatcert.com
+
+	ldap name is genrally containerized as :
+			cn=lisa, dc=rhatcert, dc=com
+
+
+- provides easy way for the centralised authentication server.
+- easy to hook-up multiple computer to one ldap server, i.e. we just have to create one user account.
+
+

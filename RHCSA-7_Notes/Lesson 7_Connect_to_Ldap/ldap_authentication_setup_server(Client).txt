@@ -1,0 +1,29 @@
+
+
+Step-1:
+	use utility "authconfig", which can be used in 3 ways:-	
+					authconfig --->>>> command-line
+					authconfig-tui ---->>> text_User_Interface
+					authconfig-gtk  ------->>> Graphical interface
+
+		$ yum install authconfig-gtk -y
+		$ yum install nscd nss-pam-ldapd pam_ldap -y
+				Here, nscd >> (name services cache daemon) caches login mechanism information from external 
+					machines(ldap/other) to local machine.
+
+				      nss-pam-ldap >> setup's local name resolution and local authentication mechanism 
+							to get connected to ldap server.
+
+				      pam_ldap >> library needed for local authentication to be aware of the ldap.
+
+Step-2:
+	$ authconfig-gtk	For graphical authconfig.
+	
+		Now make following changes in open window:
+		        Under "User Account Configuration":
+				- select "User Account Database" to LDAP.
+				- Set 'LDAP search Base DN' to dc=rhatcert, dc=com
+				- set Ldap Server
+
+			Under Authentication Configuration:
+				Set Authentication Method = LDAP Password
