@@ -1,0 +1,9 @@
+
+## NTP doesn not manage Timezones, NTP only maintain UTC as per the local timezone.
+        I.e. If Local timezone is Asia/Kolkata, UTC will update its coordinates accordingly.
+        
+## Set Timezone :
+
+        $ timedatectl list-timezone
+        $ timedatectl set-timezone Asia/Kolkata
+        
