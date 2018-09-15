@@ -1,1 +1,31 @@
-This is a Test
+ID:---
+## Reserve ID:  user id upto 500 are reserverd for system users.
+## Unreserverd ID: ID above 100 are unreserved for all new user creation.
+
+Note: cat /etc/login.defs
+      UID_MIN 1000    # this is the unreserved ID starting for UID.
+      GID_MIN 1000    # this is the unreserved ID starting for GID.
+**** it is recommended not to raise IDs reserved by system above 500 to avoid conflict with systems that retain the 500 limit.      
+
+UMASK:
+        - It defines the default permission for new files created.
+          $ umask  or umask -S
+          
+USERADD:
+          - $ useradd -N demouser       >>> User will be created without UPG(User private group)
+          - $ useradd -g "prm" -G "secd" demouser    >> user created with primary group "prm" & secondary group "secd"
+          - $ useradd -M username          
+          NOTE:- If you do not want to create the home directory for the user at all, you can do so by running useradd
+with the -M option. However, when such a user logs into a system that has just booted and their home
+directory does not exist, their login directory will be the root directory. If such a user logs into a system
+using the su command, their login directory will be the current directory of the previous user.
+    
+          - $ useradd -r admin1     >> create system user with reserved UID, i.e. between 0-500.
+
+USERMOD:  - $ usermod -a -u 699 -d /home/dir_2 robert   >> change UID & home dir of user robert.
+          - $ usermod -m -d /home/jane -L jane      >>>> copy data of user home dir to local dir and then lock it with L flag.
+
+USERDEL:  - $ userdel -r testuser   >> delete user "testuser" along with files & folder in home dir. Except files in other file system.
+          - $ userdel -f testuser   >>> delete the user even if the user is logged in.
+          
+
