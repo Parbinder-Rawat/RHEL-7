@@ -28,4 +28,27 @@ USERMOD:  - $ usermod -a -u 699 -d /home/dir_2 robert   >> change UID & home dir
 USERDEL:  - $ userdel -r testuser   >> delete user "testuser" along with files & folder in home dir. Except files in other file system.
           - $ userdel -f testuser   >>> delete the user even if the user is logged in.
           
+LSLOGIN:    - $ lslogin       >> list the comprehensive overview of users and groups, their login activities.
+            - $ lslogin ravi or lslogin 601     >> display information for user ravi or for user with UID 601.
+            - $ lslogins --logins=0,500,jdoe,esmith \       >> shows multiple user info with username or UID.
+            
+GROUPADD:   - $ groupadd admin      >> setup new group "admin"
+            - $ groupadd -g 765 operator       >> setup group "operator" and assign GID as 765.
+            - $ groupadd -f operator      >> force the group creation.
+            - $ groupadd -r sysadm        >> Creat group with system reserved GID.
+            
+GPASSWD:    - $ gpasswd -a ravi sysadm         >> Adding user 'ravi' to group 'sysadm'.
+            - $ gpasswd -d ravi sysadm          >> Delete 'ravi' from group 'sysadm'.
+            - $ gpasswd --members user1, user2, user3 sysadm      >> add multiple users to group 'sysadm'.
+            
+GROUPMOD:   - $ groupmod -g 876 business        >>> change UID of group "business"
+            - $ groupmod -n business_new business     >> change name of the exisiting group from 'business' to 'business_new'.
+            
+GROUPDEL:   - $ groupdel operator         >> delete the group 'operator'.
+
+
+
+
+
+
 
